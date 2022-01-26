@@ -1,0 +1,37 @@
+.result {
+    align-items: center;
+    display: flex;
+    height: 166px;
+    justify-content: center;
+    min-width: 270px;
+    border: 1px solid #ccc!important;
+    border-radius: 16px;
+    margin: 20px;
+    padding: 20px;
+    height: auto;
+  }
+
+  .result-container {
+    background-size: 100% 100%;
+    margin-bottom: 0px;
+    padding: 25px 0;
+    overflow: overlay;
+  }
+  
+  .result-image{
+    margin: 75px;
+  }
+
+  .result-row {
+    height: 450px;
+    margin-top: 55px;
+    min-width: 1069px;
+    overflow: overlay;
+  }
+
+  .result-name {
+    align-self: center;
+    letter-spacing: 0;
+    min-height: 24px;
+    width: 130px;
+  }

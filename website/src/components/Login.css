@@ -1,0 +1,97 @@
+.input-label {
+    letter-spacing: 0;
+    line-height: 48.9px;
+    min-height: 22px;
+    text-align: center;
+    white-space: nowrap;
+    width: 301px;
+  }
+
+  .screen {
+    align-items: center;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 5%;
+  }
+
+  .container-center-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    width: 100%;
+  }
+
+  .container-center-horizontal > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+  }
+  
+  .screen a {
+    display: contents;
+    text-decoration: none;
+  }
+
+  .input {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 79px;
+    width: 360px;
+    margin: 30px;
+    margin-right: 90px;
+  }
+
+  .email {
+    letter-spacing: 0;
+    line-height: 24px;
+    min-height: 24px;
+    opacity: 0.5;
+    white-space: nowrap;
+    width: 416px;
+  }
+
+  .text-field {
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 8px;
+    display: flex;
+    height: 83px;
+    margin-top: 14px;
+    overflow: hidden;
+    padding: 0 16px;
+    width: 448px;
+  }
+  
+  .email-1 {
+    letter-spacing: 0;
+    line-height: 24px;
+    min-height: 24px;
+    opacity: 0.5;
+    white-space: nowrap;
+    width: 416px;
+  }
+
+  .text-1 {
+    height: 22px;
+    letter-spacing: 0;
+    text-align: center;
+    width: 132px;
+  }
+
+  .login-button {
+    align-items: center;
+    background-size: 100% 100%;
+    height: 48px;
+    justify-content: center;
+    margin-bottom: -8px;
+    min-width: 189px;
+    padding: 9px 28px;
+  }
+
+  .error-message{
+    margin-top: 30px;
+    color: red;
+  }
