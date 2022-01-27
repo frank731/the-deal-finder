@@ -1,6 +1,6 @@
 from flask import Flask, request, session
-import db
 import scraper
+import db
 
 app = Flask(__name__)
 app.secret_key = "&Qq$96bcG6xGB$F!"
