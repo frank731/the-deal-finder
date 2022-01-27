@@ -1,12 +1,10 @@
 from flask import Flask, request, session
-#import db
-#import scraper
+import db
+import scraper
 
 app = Flask(__name__)
 app.secret_key = "&Qq$96bcG6xGB$F!"
 
-
-"""
 @app.route('/signup', methods = ['POST'])
 def add_user():
     content_type = request.headers.get('Content-Type')
@@ -84,4 +82,3 @@ def get_wishlist():
 
 if __name__ == '__main__':
     app.run()
-"""

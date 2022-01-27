@@ -15,12 +15,12 @@ options.add_argument('headless')
 options.add_argument('disable-gpu')
 driver = Edge(executable_path="/Users/bobby/Downloads/edgedriver_win64/msedgedriver", options=options)
 
-def fetch_site_source(url, urlend):
+def fetch_site_source(url):
     """
     Returns source code for specified url
     """
     # Load the given page using the specified url
-    driver.get(url + urlend)
+    driver.get(url)
     # Give time for elements to load
     time.sleep(1)
     # Scroll down to bottom of page to load every element for pages that load on scroll
@@ -58,7 +58,8 @@ def get_better_product(cur_best, new_item):
         return new_item
     else:
         try:
-            return new_item if (cur_best[RATING_INDEX] * rating_multiplier - cur_best[PRICE_INDEX] < new_item[RATING_INDEX] * rating_multiplier - new_item[PRICE_INDEX]) else cur_best
+            return new_item if (cur_best[RATING_INDEX] * rating_multiplier - cur_best[PRICE_INDEX]
+             < new_item[RATING_INDEX] * rating_multiplier - new_item[PRICE_INDEX]) else cur_best
         except IndexError:
             return cur_best
 
@@ -73,7 +74,7 @@ def get_soup(product, address, urlend=""):
     address += product
 
     # Converts page info into a BeautifulSoup object that can be scraped
-    return BeautifulSoup(fetch_site_source(address, urlend), "html.parser")
+    return BeautifulSoup(fetch_site_source(address + urlend), "html.parser")
 
 
 def get_amazon_results(product):
