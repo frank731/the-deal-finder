@@ -1,5 +1,6 @@
 from flask import Flask, request, session
 from flask_bcrypt import Bcrypt
+from waitress import serve
 import db
 import scraper
 
@@ -86,4 +87,4 @@ def get_wishlist():
     return {'items': []}
 
 if __name__ == '__main__':
-    app.run()
+    serve(app, host='0.0.0.0', port=5000, url_scheme='https')
