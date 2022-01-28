@@ -1,5 +1,4 @@
 from mongoengine import connect, Document, StringField, ListField
-from bcrypt import checkpw
 
 connect(host="mongodb+srv://frank:e3S6j3g2zUoujt0i@cluster0.uyivi.mongodb.net/test")
 
@@ -18,16 +17,13 @@ def add_user(email, password):
     User(email=email, password=password).save()
     return 'success'
 
-def login_user(email, password):
+def check_user_exists(email):
     user = User.objects(email=email).first()
     # Check if user in database
     if user:
-        if checkpw(password.encode('utf8'), user.password.encode('utf8')):
-            return "work"
-        else:
-            return "wrong"
+        return True
     else:
-        return "no email"
+        return False
 
 def remove_user(email):
     if not User.objects(email=email).first():

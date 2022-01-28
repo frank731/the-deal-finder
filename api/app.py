@@ -1,9 +1,11 @@
 from flask import Flask, request, session
+from flask_bcrypt import Bcrypt
 import db
 import scraper
 
 app = Flask(__name__)
 app.secret_key = "&Qq$96bcG6xGB$F!"
+app_bcrypt = Bcrypt(app)
 
 @app.route('/signup', methods = ['POST'])
 def add_user():
@@ -27,11 +29,14 @@ def login_user():
         email = request.json['email']
         password = request.json['password']
         # Add given user to the database
-        status = db.login_user(email, password)   
-        print(status)
-        if status == "work":
-            session['email'] = email
-        return {'status': status }
+        if db.check_user_exists(email):
+            if app_bcrypt.check_password_hash(db.get_pw_hash(email), password):
+                session['email'] = email
+                return {'status': 'work'}
+            else:
+                return {'status': 'wrong'}
+        else:
+            return {'status': 'no email' }
     else:
         return {'status': "Content type not supported" }
 

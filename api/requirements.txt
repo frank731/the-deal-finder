@@ -1,5 +1,7 @@
-msedge_selenium_tools==3.141.3
+webdriver_manager==3.5.2
+Flask_Bcrypt==0.7.1
 mongoengine==0.23.1
+msedge_selenium_tools==3.141.3
 Flask==1.1.2
 beautifulsoup4==4.10.0
-bcrypt==3.2.0
+pymongo[srv]==3.12.0

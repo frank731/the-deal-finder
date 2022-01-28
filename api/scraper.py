@@ -1,8 +1,10 @@
 import re
 from msedge.selenium_tools import Edge
 from msedge.selenium_tools import EdgeOptions
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 import time
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+import logging
 
 PRICE_INDEX = 1
 RATING_INDEX = 2
@@ -13,7 +15,7 @@ options = EdgeOptions()
 options.use_chromium = True
 options.add_argument('headless')
 options.add_argument('disable-gpu')
-driver = Edge(executable_path="/Users/bobby/Downloads/edgedriver_win64/msedgedriver", options=options)
+driver = Edge(EdgeChromiumDriverManager(log_level=logging.ERROR).install(), options=options)
 
 def fetch_site_source(url):
     """
