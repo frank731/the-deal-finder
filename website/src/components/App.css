@@ -155,6 +155,10 @@
   width: 422px;
 }
 
+.logged-in-label{
+  margin-top: 5px;
+}
+
 /*Fonts*/
 
 .roboto-normal-black-18px {

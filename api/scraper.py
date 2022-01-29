@@ -177,7 +177,10 @@ def get_best_result(product):
     best_item = []
     best_item = get_better_product(best_item, get_amazon_results(product))
     # Base rating constant on amazon price, since amazon most broad. Prevents buying accessories that are much cheaper but usually have no rating
-    rating_multiplier = max(rating_multiplier, best_item[PRICE_INDEX])
+    try:
+        rating_multiplier = max(rating_multiplier, best_item[PRICE_INDEX])
+    except IndexError:
+        print("No amazon results")
     best_item = get_better_product(best_item, get_best_buy_results(product))
     best_item = get_better_product(best_item, get_google_shopping_results(product))
     return best_item

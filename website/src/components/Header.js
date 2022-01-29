@@ -14,16 +14,19 @@ function Header() {
       if(data['result'] == 'not logged in'){
         setLinks(<a className="nav-link" href="/login">Log In</a>);
         setSignUpButton(<ButtonPrimary text="Sign Up" className="button-primary" link="/signup"></ButtonPrimary>)
+        setSignedInEmail();
       }
       else{
         setLinks(<a className="nav-link" href="/wishlist">Wishlist</a>)
         setSignUpButton(<ButtonPrimary text="Log Out" className="button-primary" link="/logout"></ButtonPrimary>)
+        setSignedInEmail(<h3 className="logged-in-label">Logged in as {data['result']}</h3>)
       }
     }
     CheckLogin();
   }, []);
   const [links, setLinks] = useState();
   const [signupButton, setSignUpButton] = useState();
+  const [signedInEmail, setSignedInEmail] = useState();
   return (
     <nav className="navbar navbar-expand-lg navbar-light navigation-left">
       <h1 className="navbar-brand mb-0 logo">
@@ -35,6 +38,7 @@ function Header() {
           {links}
       </div>
     </div>
+    {signedInEmail}
     {signupButton}
     </nav>
   );

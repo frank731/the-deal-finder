@@ -92,7 +92,7 @@ function Wishlist() {
   const [curScraping, setCurScraping] = useState(false);
   console.log(curScraping)
   const rendered_items = (!curScraping) ? items.map(item => (<Item itemName={item.itemName} itemID={item.itemID} key={item.itemID} editItem={EditItem} deleteItem={DeleteItem} stopEdit={StopEdit} editable={item.editable}/>)) : <div/>;
-  const scrape_text = (curScraping) ?  <ScrapingText time={items.length * 15}/>: <div/>
+  const scrape_text = (curScraping) ?  <ScrapingText time={items.length * 30}/>: <div/>
   const action_buttons = (!curScraping) ?  [<SubmitButton func={CreateItem} text="Add Item"/>, <SubmitButton func={StartScrape} text="Start Scraper"/>] : <div/>
   return (
     <div className="container-center-horizontal clearfix">
