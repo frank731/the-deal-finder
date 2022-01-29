@@ -14,8 +14,9 @@ function Login(props) {
     const email = document.querySelector("#email-input").value
     const password =  document.querySelector("#password-input").value
     // Send request to login endpoint
-    const response = await fetch("/login", {
+    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/login", {
       method: 'POST',
+      credentials: "include",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, password: password })
     })
@@ -44,8 +45,9 @@ function Login(props) {
     // Get inputted email and password from respective ids 
     const email = document.querySelector("#email-input").value
     const password = await HashPassword(document.querySelector("#password-input").value)
-    const response = await fetch("/signup", {
+    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/signup", {
       method: 'POST',
+      credentials: "include",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, password: password })
     })

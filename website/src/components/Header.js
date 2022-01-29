@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import "./App.css"
 import ButtonPrimary from './ButtonPrimary';
-import {NavLink} from "react-router-dom"
 
 function Header() {
   useEffect(() => {
     async function CheckLogin(){
-      const response = await fetch("/check-login", {
+      const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/check-login", {
         method: 'GET',
+        credentials: "include"
       })
       const data = await response.json();
+      
       if(data['result'] == 'not logged in'){
         setLinks(<a className="nav-link" href="/login">Log In</a>);
         setSignUpButton(<ButtonPrimary text="Sign Up" className="button-primary" link="/signup"></ButtonPrimary>)

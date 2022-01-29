@@ -6,8 +6,9 @@ function Logout(){
         LogoutUser()
     }, []);
     async function LogoutUser(){
-        const response = await fetch("/logout", {
-            method: 'GET'
+        const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/logout", {
+            method: 'GET',
+            credentials: "include"
         });
         const data = await response.json();
         if(data['status'] === "logged out"){

@@ -51,8 +51,9 @@ function Wishlist() {
       // Disable item
       EditItem(itemID, "false");
       ChangeItem(itemID, e.target.innerHTML)
-      fetch("/update-wishlist", {
+      fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/update-wishlist", {
         method: 'POST',
+        credentials: "include",
         headers: { 'Content-Type': 'application/json' },
         // Get only a list of the item names
         body: JSON.stringify({ items: items.map(item => item.itemName) })
@@ -63,22 +64,23 @@ function Wishlist() {
 
   async function StartScrape(){
     setCurScraping(true);
-    const response = await fetch("/scrape", {
+    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/scrape", {
       method: 'POST',
+      credentials: "include",
       headers: { 'Content-Type': 'application/json' },
       // Get only a list of the item names
       body: JSON.stringify({ items: items.map(item => item.itemName) })
     })
     
     const data = await response.json();
-    //console.log(data)
     history('/results', 
     {state: data});
   }
 
   async function GetUserWishlist(){
-    const response = await fetch("/get-wishlist", {
+    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/get-wishlist", {
       method: 'GET',
+      credentials: "include"
     })
     const data = await response.json();
     setItems(data['items'].map(item => Object.assign({itemName: item, itemID: uuidv4(), editable: "false"})));
