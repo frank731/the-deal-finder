@@ -1,5 +1,6 @@
 from flask import Flask, request, session
 from flask_bcrypt import Bcrypt
+from flask_cors import CORS
 from waitress import serve
 import db
 import scraper
@@ -7,6 +8,7 @@ import scraper
 app = Flask(__name__)
 app.secret_key = "&Qq$96bcG6xGB$F!"
 app_bcrypt = Bcrypt(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "https://the-deal-finder.azurewebsites.net/"}})
 
 @app.route('/signup', methods = ['POST'])
 def add_user():
