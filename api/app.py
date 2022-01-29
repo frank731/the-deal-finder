@@ -7,8 +7,9 @@ import scraper
 
 app = Flask(__name__)
 app.secret_key = "&Qq$96bcG6xGB$F!"
+app.config['CORS_HEADERS'] = 'Content-Type'
 app_bcrypt = Bcrypt(app)
-cors = CORS(app, resources={r"/api/*": {"origins": "https://the-deal-finder.azurewebsites.net/"}})
+CORS(app, resources={r"/*": {"origins": "https://the-deal-finder.azurewebsites.net/"}})
 
 @app.route('/signup', methods = ['POST'])
 def add_user():
