@@ -186,5 +186,5 @@ def get_best_result(product):
     return best_item
 
 if __name__ == "__main__":
-    wanted = "ideapad l340"#input("What product do you want?")
+    wanted = "ideapad-l340"#input("What product do you want?")
     print(get_best_result(wanted))

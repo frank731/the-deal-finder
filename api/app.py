@@ -21,7 +21,8 @@ def add_user():
         password = request.json['password']
         # Add given user to the database
         status = db.add_user(email, password)
-        session['email'] = email
+        if status == "success":
+            session['email'] = email
         return {'status': status }
     else:
         return {'status': "Content type not supported" }
@@ -97,5 +98,7 @@ def get_wishlist():
     return {'items': []}
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, ssl_context=('C:/Certbot/live/the-deal-finder-api.canadaeast.cloudapp.azure.com/fullchain.pem', 'C:/Certbot/live/the-deal-finder-api.canadaeast.cloudapp.azure.com/privkey.pem'))
+    app.run(host='0.0.0.0', port=5000, 
+    ssl_context=('C:/Certbot/live/the-deal-finder-api.canadaeast.cloudapp.azure.com/fullchain.pem', 
+    'C:/Certbot/live/the-deal-finder-api.canadaeast.cloudapp.azure.com/privkey.pem'))
     
