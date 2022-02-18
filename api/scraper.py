@@ -14,6 +14,8 @@ rating_multiplier = 100
 options = EdgeOptions()
 options.use_chromium = True
 options.add_argument('headless')
+options.add_argument(
+    "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
 options.add_argument('disable-gpu')
 driver = Edge(EdgeChromiumDriverManager(log_level=logging.ERROR).install(), options=options)
 
@@ -100,7 +102,6 @@ def get_amazon_results(product):
             # Rating in format "x out of 5 stars", split by whitespace and get first element to get rating
             item_rating = float(poss_item.find("span", class_="a-icon-alt").text.split()[0])
             best_item = get_better_product(best_item, [item_name, item_price, item_rating, item_img, item_link])
-            
         except (AttributeError, TypeError):
             print("Skipped non item")
 
@@ -144,7 +145,7 @@ def get_google_shopping_results(product):
         use_grid = True
 
     # Gets first 10 items under their container with the specified class name
-    for poss_item in soup.find_all("div", class_=["sh-dlr__content"])[:10]:
+    for poss_item in soup.find_all("div", class_=["sh-dgr__content"])[:10]:
         try:
             # Get the image url, name, link, and price
             # Image has no specified class so need to find its parent
@@ -186,5 +187,5 @@ def get_best_result(product):
     return best_item
 
 if __name__ == "__main__":
-    wanted = "ideapad-l340"#input("What product do you want?")
+    wanted = "ideapad-l340"
     print(get_best_result(wanted))

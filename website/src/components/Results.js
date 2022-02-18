@@ -18,7 +18,8 @@ function Results() {
   for (const wantedName in location.state['results']){
     if(location.state['results'].hasOwnProperty(wantedName)){
       const item = location.state['results'][wantedName];
-      results.push(<Result key={item[NAME_INDEX]} wantedName={wantedName} itemName={item[NAME_INDEX]} itemPrice={item[PRICE_INDEX]} itemRating={item[RATING_INDEX]} itemLink={item[LINK_INDEX]} itemImage={item[IMAGE_INDEX]}/>);
+      results.push(<Result key={item[NAME_INDEX]} wantedName={wantedName} itemName={item[NAME_INDEX]} itemPrice={item[PRICE_INDEX]} 
+        itemRating={item[RATING_INDEX]} itemLink={item[LINK_INDEX]} itemImage={item[IMAGE_INDEX]}/>);
     }
   }
   return (

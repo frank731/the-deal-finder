@@ -21,6 +21,13 @@ function Wishlist() {
   function DeleteItem(itemID){
     const remainingItems = items.filter(item => itemID !== item.itemID);
     setItems(remainingItems);
+    fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/update-wishlist", {
+        method: 'POST',
+        credentials: "include",
+        headers: { 'Content-Type': 'application/json' },
+        // Get only a list of the item names
+        body: JSON.stringify({ items: remainingItems.map(item => item.itemName) })
+      })
   }
 
   function EditItem(itemID, on){
@@ -50,7 +57,7 @@ function Wishlist() {
       }
       // Disable item
       EditItem(itemID, "false");
-      ChangeItem(itemID, e.target.innerHTML)
+      ChangeItem(itemID, e.target.textContent)
       fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/update-wishlist", {
         method: 'POST',
         credentials: "include",
@@ -59,7 +66,6 @@ function Wishlist() {
         body: JSON.stringify({ items: items.map(item => item.itemName) })
       })
     }
-    //
   }
 
   async function StartScrape(){
@@ -87,13 +93,17 @@ function Wishlist() {
   }
 
   const history = useNavigate();
-  const WISH_DATA = [];//{itemName: "test", itemID: "2"}];
+  const WISH_DATA = [];
   const [items, setItems] = useState(WISH_DATA);
   const [curScraping, setCurScraping] = useState(false);
   console.log(curScraping)
-  const rendered_items = (!curScraping) ? items.map(item => (<Item itemName={item.itemName} itemID={item.itemID} key={item.itemID} editItem={EditItem} deleteItem={DeleteItem} stopEdit={StopEdit} editable={item.editable}/>)) : <div/>;
+  const rendered_items = (!curScraping) ? items.map(item => (<Item itemName={item.itemName} 
+    itemID={item.itemID} key={item.itemID} editItem={EditItem} 
+    deleteItem={DeleteItem} stopEdit={StopEdit} editable={item.editable}/>)) : <div/>;
   const scrape_text = (curScraping) ?  <ScrapingText time={items.length * 30}/>: <div/>
-  const action_buttons = (!curScraping) ?  [<SubmitButton func={CreateItem} text="Add Item"/>, <SubmitButton func={StartScrape} text="Start Scraper"/>] : <div/>
+  const action_buttons = (!curScraping) ?  [<SubmitButton func={CreateItem}
+     text="Add Item"/>, 
+     <SubmitButton func={StartScrape} text="Start Scraper"/>] : <div/>
   return (
     <div className="container-center-horizontal clearfix">
       <div className="screen clearfix">

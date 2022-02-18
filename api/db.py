@@ -1,6 +1,9 @@
 from mongoengine import connect, Document, StringField, ListField
+import json
 
-connect(host="mongodb+srv://frank:e3S6j3g2zUoujt0i@cluster0.uyivi.mongodb.net/test")
+connect_config = open('config.json', 'r')
+connect(host=json.load(connect_config)['MONGO_CONNECTION_STRING'])
+connect_config.close()
 
 class User(Document):
     email = StringField()

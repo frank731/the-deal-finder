@@ -37,7 +37,6 @@ function Login(props) {
       history("/wishlist");
       window.location.reload(false);
     }
-    console.log(data);
   }
   async function SignUpButtonAction(e){
     // Prevent page from reloading 
@@ -61,7 +60,6 @@ function Login(props) {
       history("/wishlist");
       window.location.reload(false);
     }
-    console.log(data["status"]);
   }
   const history = useNavigate();
   return (

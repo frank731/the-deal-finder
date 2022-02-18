@@ -3,13 +3,19 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS, cross_origin
 import db
 import scraper
+import json
+from gevent.pywsgi import WSGIServer
+
+key_config = open('config.json', 'r')
 
 app = Flask(__name__)
-app.secret_key = "&Qq$96bcG6xGB$F!"
+app.secret_key = json.load(key_config)['SECRET_KEY']
 app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app_bcrypt = Bcrypt(app)
 CORS(app)
+
+key_config.close()
 
 @app.route('/signup', methods = ['POST'])
 @cross_origin(supports_credentials=True)
@@ -98,7 +104,6 @@ def get_wishlist():
     return {'items': []}
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, 
-    ssl_context=('C:/Certbot/live/the-deal-finder-api.canadaeast.cloudapp.azure.com/fullchain.pem', 
-    'C:/Certbot/live/the-deal-finder-api.canadaeast.cloudapp.azure.com/privkey.pem'))
-    
+    http_server = WSGIServer(('0.0.0.0', 5000), app, keyfile='C:/Certbot/live/the-deal-finder-api.canadaeast.cloudapp.azure.com/privkey.pem', 
+certfile='C:/Certbot/live/the-deal-finder-api.canadaeast.cloudapp.azure.com/fullchain.pem')
+    http_server.serve_forever()

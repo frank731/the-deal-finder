@@ -27,6 +27,7 @@ function Browser() {
       <div className="button-1 border-1px-black"></div>
       <div className="button border-1px-black"></div>
       <div className="button border-1px-black"></div>
+      <img className="cash-logo" src={require("./cash.png")}/>
     </div>
   );
 }
