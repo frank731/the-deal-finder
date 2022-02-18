@@ -46,9 +46,9 @@ function Wishlist() {
     setItems(newItems);
   }
 
-  function StopEdit(e, itemID){
+  function StopEdit(e, itemID, clickedOff = false){
     // Check  if input is enter key
-    if(e.key === "Enter"){
+    if(e.key === "Enter" || clickedOff){
       //Stops default new line
       if (e.preventDefault) {
         e.preventDefault(); 
@@ -129,7 +129,7 @@ function Item(props) {
     return (
       <div className="item">
         <div className="item-container">
-          <div onKeyDown={e => stopEdit(e, itemID)} contentEditable={editable} className="item-name roboto-normal-black-20px">
+          <div onKeyDown={e => stopEdit(e, itemID)} contentEditable={editable} onBlur={e => stopEdit(e, itemID, true)} className="item-name roboto-normal-black-20px">
             {itemName}
           </div>
           <button onClick={() => editItem(itemID, "true")} className="btn btn-link item-action roboto-normal-black-14px">
