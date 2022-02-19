@@ -160,10 +160,8 @@
 }
 
 .cash-logo{
-  margin: 0px 30px;
-  width: 30%;
-  height: 60%;
-  position: absolute;
+  margin-left: 160px;
+  margin-top: 140px;
 }
 
 /*Fonts*/

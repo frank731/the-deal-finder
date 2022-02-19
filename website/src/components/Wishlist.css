@@ -11,6 +11,7 @@
 
   .grid-container{
     display: grid;
+    overflow: auto;
     grid-template-columns: auto auto auto auto;
   }
 
@@ -43,7 +44,6 @@
   }
 
   .flex-row {
-    align-items: flex-start;
     display: flex;
     height: 450px;
     margin-top: 55px;

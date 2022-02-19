@@ -26,7 +26,7 @@
     height: 450px;
     margin-top: 55px;
     min-width: 1069px;
-    overflow: overlay;
+    overflow: auto;
   }
 
   .result-name {
