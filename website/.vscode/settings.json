@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/6c6035ac-1f24-4187-8a77-a4878d994c6d/resourceGroups/the-deal-finder_group/providers/Microsoft.Web/sites/the-deal-finder",
+    "appService.deploySubpath": "."
+}

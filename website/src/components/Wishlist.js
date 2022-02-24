@@ -4,6 +4,7 @@ import SubmitButton from './SubmitButton';
 import CheckLogin from './CheckLogin';
 import './Login.css'
 import  './Wishlist.css'
+import apiLocation from './APILocation';
 const { v4: uuidv4 } = require('uuid');
 
 function Wishlist() {
@@ -21,7 +22,7 @@ function Wishlist() {
   function DeleteItem(itemID){
     const remainingItems = items.filter(item => itemID !== item.itemID);
     setItems(remainingItems);
-    fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/update-wishlist", {
+    fetch(apiLocation + "update-wishlist", {
         method: 'POST',
         credentials: "include",
         headers: { 'Content-Type': 'application/json' },
@@ -58,7 +59,7 @@ function Wishlist() {
       // Disable item
       EditItem(itemID, "false");
       ChangeItem(itemID, e.target.textContent)
-      fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/update-wishlist", {
+      fetch(apiLocation + "update-wishlist", {
         method: 'POST',
         credentials: "include",
         headers: { 'Content-Type': 'application/json' },
@@ -70,7 +71,7 @@ function Wishlist() {
 
   async function StartScrape(){
     setCurScraping(true);
-    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/scrape", {
+    const response = await fetch(apiLocation + "scrape", {
       method: 'POST',
       credentials: "include",
       headers: { 'Content-Type': 'application/json' },
@@ -84,7 +85,7 @@ function Wishlist() {
   }
 
   async function GetUserWishlist(){
-    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/get-wishlist", {
+    const response = await fetch(apiLocation + "get-wishlist", {
       method: 'GET',
       credentials: "include"
     })

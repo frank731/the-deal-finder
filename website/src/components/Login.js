@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import './Login.css'
 import {HashPassword} from "../node_scripts/Hasher"
 import {useNavigate} from 'react-router'
+import apiLocation from './APILocation';
 
 function Login(props) {
   const {action, func} = props
@@ -14,7 +15,7 @@ function Login(props) {
     const email = document.querySelector("#email-input").value
     const password =  document.querySelector("#password-input").value
     // Send request to login endpoint
-    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/login", {
+    const response = await fetch(apiLocation + "login", {
       method: 'POST',
       credentials: "include",
       headers: { 'Content-Type': 'application/json' },
@@ -44,7 +45,7 @@ function Login(props) {
     // Get inputted email and password from respective ids 
     const email = document.querySelector("#email-input").value
     const password = await HashPassword(document.querySelector("#password-input").value)
-    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/signup", {
+    const response = await fetch(apiLocation + "signup", {
       method: 'POST',
       credentials: "include",
       headers: { 'Content-Type': 'application/json' },

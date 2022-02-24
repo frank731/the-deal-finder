@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import apiLocation from './APILocation';
 import './Logout.css'
 
 function Logout(){
@@ -6,7 +7,7 @@ function Logout(){
         LogoutUser()
     }, []);
     async function LogoutUser(){
-        const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/logout", {
+        const response = await fetch(apiLocation + "logout", {
             method: 'GET',
             credentials: "include"
         });

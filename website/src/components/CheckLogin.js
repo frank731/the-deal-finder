@@ -1,6 +1,8 @@
+import apiLocation from "./APILocation";
+
 async function CheckLogin(history){
     //Protect pages from non authorized access
-    const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/check-login", {
+    const response = await fetch(apiLocation + "check-login", {
       method: 'GET',
       credentials: "include"
     })

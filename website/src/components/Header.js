@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import "./App.css"
 import ButtonPrimary from './ButtonPrimary';
+import apiLocation from './APILocation';
 
 function Header() {
   useEffect(() => {
     async function CheckLogin(){
-      const response = await fetch("https://the-deal-finder-api.canadaeast.cloudapp.azure.com:5000/check-login", {
+      const response = await fetch(apiLocation + "check-login", {
         method: 'GET',
         credentials: "include"
       })
